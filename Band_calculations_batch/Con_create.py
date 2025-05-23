@@ -17,7 +17,7 @@ def create_con(directory, elements):
     # Generate the target folder name based on the elements
     subfolder_name = '_'.join(cleaned_elements)
     # Generate the subfolder path (using the current working directory)
-    subfolder_path = os.path.join(os.getcwd(), "Tot", subfolder_name, "con")
+    subfolder_path = os.path.join(os.getcwd(), "Tot Band", subfolder_name, "con")
 
     # Ensure the subfolder exists
     if not os.path.exists(subfolder_path):
@@ -37,7 +37,7 @@ def move_input(con_directory, elements):
     cleaned_elements = [element.strip() for element in elements]
     # Generate the target folder name based on the elements
     subfolder_name = '_'.join(cleaned_elements)
-    input_path = os.path.join(os.getcwd(), "Tot", subfolder_name, 'input')
+    input_path = os.path.join(os.getcwd(), "Tot Band", subfolder_name, 'input')
 
     # Iterate through all files in the directory
     for filename in os.listdir(input_path):
