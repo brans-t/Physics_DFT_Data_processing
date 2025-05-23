@@ -17,7 +17,7 @@ def create_con(directory, elements):
     # Generate the target folder name based on the elements
     subfolder_name = '_'.join(cleaned_elements)
     # Generate the subfolder path (using the current working directory)
-    subfolder_path = os.path.join(os.getcwd(), subfolder_name, "con")
+    subfolder_path = os.path.join(os.getcwd(), "Tot", subfolder_name, "con")
 
     # Ensure the subfolder exists
     if not os.path.exists(subfolder_path):
@@ -37,11 +37,11 @@ def move_input(con_directory, elements):
     cleaned_elements = [element.strip() for element in elements]
     # Generate the target folder name based on the elements
     subfolder_name = '_'.join(cleaned_elements)
-    input_path = os.path.join(os.getcwd(), subfolder_name, 'input')
+    input_path = os.path.join(os.getcwd(), "Tot", subfolder_name, 'input')
 
     # Iterate through all files in the directory
     for filename in os.listdir(input_path):
-        if filename.startswith(("INCAR", "KPOINTS", "POTCAR", "POSCAR")):
+        if filename.startswith(("INCAR", "KPOINTS", "POTCAR", "POSCAR", "vasp.pbs")):
             # 构造输入文件路径
             input_file = os.path.join(input_path, filename)
             # 构造输出文件路径（保存到子文件夹，保持相同的文件名）

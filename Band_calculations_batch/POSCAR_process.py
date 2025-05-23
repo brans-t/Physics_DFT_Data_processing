@@ -49,7 +49,7 @@ def batch_replace_poscar_files(directory, elements, atom_counts):
     # Generate the target folder name
     subfolder_name = '_'.join(cleaned_elements)
     # Generate the subfolder path (using the current working directory)
-    subfolder_path = os.path.join(os.getcwd(), subfolder_name, "input")
+    subfolder_path = os.path.join(os.getcwd(),  "Tot", subfolder_name, "input")
 
     # Ensure the subfolder exists
     if not os.path.exists(subfolder_path):
