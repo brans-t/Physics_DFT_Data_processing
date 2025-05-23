@@ -1,7 +1,7 @@
 import os
 import shutil
 
-def copy_files(directory, elements):
+def create_con(directory, elements):
     """
     Copy INCAR and KPOINTS files from a specified directory to a generated subfolder.
 
@@ -17,24 +17,40 @@ def copy_files(directory, elements):
     # Generate the target folder name based on the elements
     subfolder_name = '_'.join(cleaned_elements)
     # Generate the subfolder path (using the current working directory)
-    subfolder_path = os.path.join(os.getcwd(), subfolder_name, "input")
+    subfolder_path = os.path.join(os.getcwd(), subfolder_name, "con")
 
     # Ensure the subfolder exists
     if not os.path.exists(subfolder_path):
         os.makedirs(subfolder_path)
         print(f"Created subfolder: {subfolder_path}")
+    return subfolder_path
+
+
+
+def move_input(con_directory, elements):
+
+    if not os.path.isdir(con_directory):
+        print(f"Error: The path '{con_directory}' is not a valid directory.")
+        return
+
+    # Strip leading and trailing whitespace from each element
+    cleaned_elements = [element.strip() for element in elements]
+    # Generate the target folder name based on the elements
+    subfolder_name = '_'.join(cleaned_elements)
+    input_path = os.path.join(os.getcwd(), subfolder_name, 'input')
 
     # Iterate through all files in the directory
-    for filename in os.listdir(directory):
-        # Check if the filename starts with any of the specified prefixes
-        if filename.startswith(("INCAR", "KPOINTS", "vasp")):
-            # Construct the input file path
-            input_file = os.path.join(directory, filename)
-            # Construct the output file path (save to the subfolder, keeping the same filename)
-            output_file = os.path.join(subfolder_path, filename)
-            # Copy the file
+    for filename in os.listdir(input_path):
+        if filename.startswith(("INCAR", "KPOINTS", "POTCAR", "POSCAR")):
+            # 构造输入文件路径
+            input_file = os.path.join(input_path, filename)
+            # 构造输出文件路径（保存到子文件夹，保持相同的文件名）
+            output_path = create_con(con_directory, elements)
+            output_file = os.path.join(output_path, filename)
+            # 复制文件
             shutil.copy(input_file, output_file)
             print(f"Copied {input_file} to {output_file}")
+
 
 
 # Get the current working directory
@@ -52,4 +68,5 @@ with open(elements_file, 'r') as file:
         # Split element symbols
         elements = [element.strip("'") for element in line.split(', ')]
         # Call the function to handle INCAR and KPOINTS files
-        copy_files(incar_directory, elements)
+        create_con(incar_directory, elements)
+        move_input(incar_directory, elements)
