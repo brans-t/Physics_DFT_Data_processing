@@ -17,7 +17,7 @@ def create_con(directory, elements):
     # Generate the target folder name based on the elements
     subfolder_name = '_'.join(cleaned_elements)
     # Generate the subfolder path (using the current working directory)
-    subfolder_path = os.path.join(os.getcwd(), "Tot Band", subfolder_name, "con")
+    subfolder_path = os.path.join(os.getcwd(), "Tot Band", subfolder_name, "opt")
 
     # Ensure the subfolder exists
     if not os.path.exists(subfolder_path):

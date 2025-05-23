@@ -45,7 +45,7 @@ if __name__ == "__main__":
 
     # Get the current working directory
     current_directory = os.getcwd()
-    # Construct the path to the element file (assuming it is in the 'output' subdirectory of the current directory)
+    # optstruct the path to the element file (assuming it is in the 'output' subdirectory of the current directory)
     elements_file = os.path.join(current_directory, "output", "atom_elements.txt")
 
     # Open the element file and read it line by line
@@ -61,8 +61,8 @@ if __name__ == "__main__":
             # Generate the target folder name based on the elements
             subfolder_name = '_'.join(cleaned_elements)
 
-            # Construct the target directory path
-            target_directory = os.path.join(script_dir, "Tot Band", subfolder_name, "con")
+            # optstruct the target directory path
+            target_directory = os.path.join(script_dir, "Tot Band", subfolder_name, "opt")
 
             # Call the function to submit the job
             submit_vasp_job(target_directory)
