@@ -97,7 +97,7 @@ def extract_files(source_folder, target_folder_name, suffixes, log_file):
                 with open(file_path, "r") as source_file:
                     content = source_file.read()
                     target_file.write(content)
-                    target_file.write("\n")  # Add a newline character to separate contents of different files
+                    # target_file.write("\n")  # Add a newline character to separate contents of different files
         log_file.write(f"All file contents have been merged in order to '{target_file_path}'.\n")
         return True  # Indicate success
     else:
