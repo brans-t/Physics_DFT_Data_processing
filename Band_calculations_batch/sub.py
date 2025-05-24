@@ -62,7 +62,7 @@ if __name__ == "__main__":
             subfolder_name = '_'.join(cleaned_elements)
 
             # optstruct the target directory path
-            target_directory = os.path.join(script_dir, "Tot Band", subfolder_name, "opt")
+            target_directory = os.path.join(script_dir, "Tot_Band", subfolder_name, "opt")
 
             # Call the function to submit the job
             submit_vasp_job(target_directory)

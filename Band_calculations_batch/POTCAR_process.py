@@ -65,7 +65,7 @@ def extract_files(source_folder, target_folder_name, suffixes, log_file):
     """
     # Dynamically generate the target folder name
     target_folder = os.path.join(os.path.dirname(source_folder), target_folder_name)
-    input_subfolder = os.path.join("Tot Band", target_folder, "input")  # Create an input subfolder
+    input_subfolder = os.path.join("Tot_Band", target_folder, "input")  # Create an input subfolder
     if not os.path.exists(input_subfolder):
         os.makedirs(input_subfolder)
         log_file.write(f"Target folder '{input_subfolder}' has been created.\n")
