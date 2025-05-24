@@ -58,7 +58,7 @@ current_directory = os.getcwd()
 # Construct the path to the element file (assuming it is in the 'output' subdirectory of the current directory)
 elements_file = os.path.join(current_directory, "output", "atom_elements.txt")
 # Construct the path to the directory containing INCAR and KPOINTS files (assuming it is in the 'source_file' subdirectory of the current directory)
-incar_directory = os.path.join(current_directory, "source_file")
+source_directory = os.path.join(current_directory, "source_file")
 
 # Open the element file and read it line by line
 with open(elements_file, 'r') as file:
@@ -68,5 +68,5 @@ with open(elements_file, 'r') as file:
         # Split element symbols
         elements = [element.strip("'") for element in line.split(', ')]
         # Call the function to handle INCAR and KPOINTS files
-        create_opt(incar_directory, elements)
-        move_input(incar_directory, elements)
+        create_opt(source_directory, elements)
+        move_input(source_directory, elements)
