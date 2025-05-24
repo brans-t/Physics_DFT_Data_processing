@@ -1,7 +1,7 @@
 import os
 import shutil
 
-def create_con(directory, elements):
+def create_opt(directory, elements):
     """
     Copy INCAR and KPOINTS files from a specified directory to a generated subfolder.
 
@@ -45,7 +45,7 @@ def move_input(con_directory, elements):
             # 构造输入文件路径
             input_file = os.path.join(input_path, filename)
             # 构造输出文件路径（保存到子文件夹，保持相同的文件名）
-            output_path = create_con(con_directory, elements)
+            output_path = create_opt(con_directory, elements)
             output_file = os.path.join(output_path, filename)
             # 复制文件
             shutil.copy(input_file, output_file)
@@ -68,5 +68,5 @@ with open(elements_file, 'r') as file:
         # Split element symbols
         elements = [element.strip("'") for element in line.split(', ')]
         # Call the function to handle INCAR and KPOINTS files
-        create_con(incar_directory, elements)
+        create_opt(incar_directory, elements)
         move_input(incar_directory, elements)
